@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Jales Vision | Visão completa da operação em tempo real</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section id="loginScreen" class="login-screen">
+    <div class="login-bg"></div>
+
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="assets/logo-grupo-jales.png" alt="Logo Grupo Jales" />
+        <div>
+          <span class="eyebrow">GRUPO JALES</span>
+          <h1>Jales Vision</h1>
+        </div>
+      </div>
+
+      <p class="login-copy">
+        Visão completa da operação em tempo real. Acesse indicadores administrativos e operacionais em um ambiente seguro, integrado e responsivo.
+      </p>
+
+      <form id="loginForm" novalidate>
+        <label for="username">Usuário</label>
+        <div class="field">
+          <span class="field-icon" data-icon="user"></span>
+          <input id="username" autocomplete="username" placeholder="Digite seu usuário" />
+        </div>
+
+        <label for="password">Senha</label>
+        <div class="field">
+          <span class="field-icon" data-icon="lock"></span>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" />
+          <button id="togglePassword" class="toggle-password" type="button" aria-label="Mostrar senha"></button>
+        </div>
+
+        <div id="loginError" class="login-error"></div>
+
+        <button class="login-button" type="submit">
+          <span>Entrar</span>
+          <span data-icon="arrow-right"></span>
+        </button>
+      </form>
+
+      <div class="secure-note">
+        <i></i>
+        Ambiente corporativo protegido
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboardScreen" class="dashboard-screen hidden">
+    <div id="mobileOverlay" class="mobile-overlay"></div>
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/logo-grupo-jales.png" class="sidebar-logo" alt="Grupo Jales" />
+        <button id="sidebarToggle" class="sidebar-toggle-button" type="button" title="Recolher ou expandir menu" aria-label="Recolher ou expandir menu"><span data-icon="menu"></span></button>
+      </div>
+
+      <div class="sidebar-caption">NAVEGAÇÃO</div>
+
+      <button id="homeButton" class="home-button active" type="button">
+        <span class="menu-icon" data-icon="home"></span>
+        <span class="menu-label">Página inicial</span>
+      </button>
+
+      <nav id="menuContainer" class="menu-container"></nav>
+
+      <div class="sidebar-footer">
+        <button id="sidebarLogout" class="logout-link" type="button">
+          <span class="menu-icon" data-icon="logout"></span>
+          <span class="menu-label">Sair</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="mobileMenuButton" class="icon-button mobile-menu-button" type="button">
+            <span data-icon="menu"></span>
+          </button>
+
+          <div>
+            <span class="eyebrow">JALES VISION</span>
+            <h2 id="pageTitle">Página inicial</h2>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div id="clock" class="clock"></div>
+
+          <button id="fullscreenButton" class="top-action-button" type="button" title="Tela cheia">
+            <span data-icon="maximize"></span><span class="top-action-label">Tela cheia</span>
+          </button>
+
+          <div class="profile">
+              <b id="profileInitials">GN</b>
+              <span><span id="profileName">Gilmar Pereira Neves</span><small id="profileRole">Usuário conectado</small></span>
+            </div>
+
+          <button id="headerLogout" class="header-logout" type="button">
+            <span data-icon="logout"></span>
+            <span>Sair</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <section id="welcomePage" class="welcome-page reference-home clean-home">
+          <div class="clean-home-content">
+            <section class="clean-intro">
+              <div class="intro-copy">
+                <span id="dynamicGreeting" class="home-kicker">SEJA BEM-VINDO AO SISTEMA</span>
+                <h3>JALES VISION</h3>
+                <h6 id="welcomeMessage" class="welcome-message">Bem-vindo ao Jales Vision.</h6>
+                <div id="welcomeMoment" class="welcome-moment"></div>
+                <h4>Visão completa da operação em tempo real.</h4>
+                <h5>FILIAL CONFRESA – MT</h5>
+                <div class="home-rule"></div>
+                <p>
+                  Uma plataforma corporativa para transformar dados em visão estratégica, controle operacional e decisões mais precisas.
+                </p>
+              </div>
+
+              <div class="logo-showcase">
+                <div class="logo-showcase-glow"></div>
+                <div class="logo-frame">
+                  <img src="assets/logo-grupo-jales.png" alt="Logo Grupo Jales" />
+                </div>
+                <span>Visão • Controle • Eficiência • Resultados</span>
+              </div>
+            </section>
+
+            <section class="motivation-grid" aria-label="Mensagens institucionais">
+              <article class="motivation-card leadership">
+                <div class="motivation-icon" data-icon="users"></div>
+                <div>
+                  <strong>Liderança</strong>
+                  <p>
+                    Inspirar pessoas, transformar desafios em oportunidades e liderar pelo exemplo.
+                  </p>
+                </div>
+              </article>
+
+              <article class="motivation-card management">
+                <div class="motivation-icon" data-icon="productivity"></div>
+                <div>
+                  <strong>Gestão</strong>
+                  <p>
+                    Planejamento, disciplina e decisões baseadas em informações confiáveis.
+                  </p>
+                </div>
+              </article>
+
+              <article class="motivation-card safety">
+                <div class="motivation-icon" data-icon="safety"></div>
+                <div>
+                  <strong>Segurança do Trabalho</strong>
+                  <p>
+                    Nenhum resultado é mais importante que a vida. Segurança é compromisso de todos.
+                  </p>
+                </div>
+              </article>
+
+              <article class="motivation-card commitment">
+                <div class="motivation-icon" data-icon="shield"></div>
+                <div>
+                  <strong>Compromisso</strong>
+                  <p>
+                    Excelência é fazer o certo todos os dias, com qualidade e foco no resultado coletivo.
+                  </p>
+                </div>
+              </article>
+            </section>
+          </div>
+
+          <div class="home-modules compact-modules">
+            <button class="home-module-card" data-group-target="2" type="button">
+              <i data-icon="clipboard-check"></i>
+              <strong>FISCALIZAÇÕES</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="0" type="button">
+              <i data-icon="calculator"></i>
+              <strong>MEDIÇÕES</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="1" type="button">
+              <i data-icon="coin"></i>
+              <strong>FINANCEIRO</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="3" type="button">
+              <i data-icon="productivity"></i>
+              <strong>PRODUÇÕES</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="4" type="button">
+              <i data-icon="safety"></i>
+              <strong>SESMT</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="5" type="button">
+              <i data-icon="future"></i>
+              <strong>PROJETO FUTURO</strong>
+              <b>→</b>
+            </button>
+          </div>
+
+          <footer class="home-footer">
+            <span>© 2026 Grupo Jales • Jales Vision</span>
+            <span>Autoria: <strong>Gilmar Pereira Neves</strong></span>
+          </footer>
+        </section>
+
+        <section id="reportPage" class="report-page hidden">
+          <div id="loadingLayer" class="loading-layer">
+            <div class="spinner"></div>
+            <strong>Carregando relatório...</strong>
+            <span>O Power BI pode solicitar autenticação na primeira abertura.</span>
+          </div>
+
+          <iframe
+            id="reportFrame"
+            title="Relatório Power BI"
+            src="about:blank"
+            allowfullscreen
+          ></iframe>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
