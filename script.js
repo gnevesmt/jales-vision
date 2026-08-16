@@ -1,12 +1,5 @@
 const AUTH_KEY="gj_v4_auth",SIDE_KEY="gj_v4_side",ACTIVE_KEY="gj_v4_page",USER_KEY="gj_v14_user";
-const USERS=[
-  {
-    username:"gneves",
-    password:"181969",
-    name:"Gilmar Pereira Neves",
-    role:"Administrador do Portal"
-  }
-];
+const USERS=[];
 const PBI={base:"https://app.powerbi.com/reportEmbed",reportId:"1e928c52-0b4c-4e12-8be0-f3bebbb4dc9a",tenantId:"335baa78-4e80-4d9d-9812-7b1addf57580"};
 
 const ICONS={
@@ -127,26 +120,48 @@ function reportUrl(page){const p=new URLSearchParams({reportId:PBI.reportId,auto
 function expandSidebar(){if(innerWidth>820&&els.side.classList.contains("collapsed")){els.side.classList.remove("collapsed");localStorage.setItem(SIDE_KEY,"false")}}
 function closeGroups(){document.querySelectorAll(".menu-group").forEach(g=>{g.classList.remove("open");g.querySelector(".menu-main")?.setAttribute("aria-expanded","false")})}
 function clearActive(){document.querySelectorAll(".active,.active-parent").forEach(x=>x.classList.remove("active","active-parent"))}
+const hoverCloseTimers=new WeakMap();
+function openGroup(group){const timer=hoverCloseTimers.get(group);if(timer)clearTimeout(timer);group.classList.add("open");group.querySelector(".menu-main")?.setAttribute("aria-expanded","true")}
+function scheduleGroupClose(group){const timer=setTimeout(()=>{group.classList.remove("open");group.querySelector(".menu-main")?.setAttribute("aria-expanded","false");hoverCloseTimers.delete(group)},320);hoverCloseTimers.set(group,timer)}
 function toggleGroup(group){expandSidebar();const open=group.classList.contains("open");closeGroups();if(!open){group.classList.add("open");group.querySelector(".menu-main").setAttribute("aria-expanded","true")}}
 function showHome(){expandSidebar();clearActive();closeGroups();els.home.classList.add("active");els.title.textContent="Jales Vision";els.report.classList.add("hidden");els.welcome.classList.remove("hidden");localStorage.removeItem(ACTIVE_KEY);if(innerWidth<=820)closeMobile()}
 function openPage(title,page,button,gi,ii,save=true){expandSidebar();clearActive();els.home.classList.remove("active");button.classList.add("active");const group=button.closest(".menu-group");group.classList.add("open");group.querySelector(".menu-main").classList.add("active-parent");els.title.textContent=title;els.welcome.classList.add("hidden");els.report.classList.remove("hidden");els.loading.classList.remove("hidden");const url=reportUrl(page);if(els.frame.src!==url)els.frame.src=url;if(save)localStorage.setItem(ACTIVE_KEY,JSON.stringify({gi,ii}));if(innerWidth<=820)closeMobile()}
-function buildMenu(){MENU.forEach((g,gi)=>{const box=document.createElement("div");box.className="menu-group";const main=document.createElement("button");main.className="menu-main";main.dataset.tooltip=g.title;main.title=g.title;main.innerHTML=`<span class="menu-icon">${ICONS[g.icon]}</span><span class="menu-label">${g.title}</span><span class="menu-arrow">${ICONS.chevron}</span>`;const sub=document.createElement("div");sub.className="submenu";const inner=document.createElement("div");inner.className="submenu-inner";g.items.forEach(([title,page,icon],ii)=>{const b=document.createElement("button");b.className="menu-item";b.dataset.tooltip=title;b.title=title;b.innerHTML=`<span class="submenu-icon">${ICONS[icon]}</span><span class="menu-label">${title}</span>`;b.addEventListener("click",()=>openPage(title,page,b,gi,ii));inner.appendChild(b)});sub.appendChild(inner);main.addEventListener("click",()=>toggleGroup(box));box.append(main,sub);els.menu.appendChild(box)})}
+function buildMenu(){MENU.forEach((g,gi)=>{const box=document.createElement("div");box.className="menu-group";const main=document.createElement("button");main.className="menu-main";main.dataset.tooltip=g.title;main.title=g.title;main.innerHTML=`<span class="menu-icon">${ICONS[g.icon]}</span><span class="menu-label">${g.title}</span><span class="menu-arrow">${ICONS.chevron}</span>`;const sub=document.createElement("div");sub.className="submenu";const inner=document.createElement("div");inner.className="submenu-inner";g.items.forEach(([title,page,icon],ii)=>{const b=document.createElement("button");b.className="menu-item";b.dataset.tooltip=title;b.title=title;b.innerHTML=`<span class="submenu-icon">${ICONS[icon]}</span><span class="menu-label">${title}</span>`;b.addEventListener("click",()=>openPage(title,page,b,gi,ii));inner.appendChild(b)});sub.appendChild(inner);main.addEventListener("click",()=>toggleGroup(box));box.addEventListener("mouseenter",()=>{if(innerWidth>820){expandSidebar();openGroup(box)}});box.addEventListener("mouseleave",()=>{if(innerWidth>820)scheduleGroupClose(box)});box.append(main,sub);els.menu.appendChild(box)})}
 function restore(){const raw=localStorage.getItem(ACTIVE_KEY);if(!raw){showHome();return}try{const s=JSON.parse(raw),item=MENU[s.gi]?.items[s.ii],b=document.querySelectorAll(".menu-group")[s.gi]?.querySelectorAll(".menu-item")[s.ii];if(item&&b)openPage(item[0],item[1],b,s.gi,s.ii,false);else showHome()}catch{showHome()}}
 function showLogin(){els.dash.classList.add("hidden");els.login.classList.remove("hidden");els.frame.src="about:blank";els.form.reset()}
 async function enterFullscreen(){try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen()}catch{}}
-async function showDash(){applyLoggedUser();updateDynamicWelcome();els.login.classList.add("hidden");els.dash.classList.remove("hidden");els.side.classList.toggle("collapsed",localStorage.getItem(SIDE_KEY)==="true"&&innerWidth>820);restore();await enterFullscreen()}
-function logout(){sessionStorage.removeItem(AUTH_KEY);sessionStorage.removeItem(USER_KEY);localStorage.removeItem(ACTIVE_KEY);if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});showLogin()}
+async function showDash(){applyLoggedUser();updateDynamicWelcome();els.login.classList.add("hidden");els.dash.classList.remove("hidden");els.side.classList.toggle("collapsed",localStorage.getItem(SIDE_KEY)==="true"&&innerWidth>820);showHome();await enterFullscreen()}
+async function logout(){if(window.JalesAuth)await window.JalesAuth.signOut();sessionStorage.removeItem(AUTH_KEY);sessionStorage.removeItem(USER_KEY);localStorage.removeItem(ACTIVE_KEY);if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});showLogin()}
 function openMobile(){els.side.classList.add("mobile-open");els.overlay.classList.add("show")}
 function closeMobile(){els.side.classList.remove("mobile-open");els.overlay.classList.remove("show")}
 function clock(){const n=new Date();$("clock").innerHTML=`<strong>${n.toLocaleTimeString("pt-BR")}</strong><br>${n.toLocaleDateString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit",year:"numeric"})}`}
 
 buildMenu();els.home.dataset.tooltip="Página inicial";els.home.title="Página inicial";$("sidebarLogout").dataset.tooltip="Sair";$("sidebarLogout").title="Sair";hydrateIcons();clock();setInterval(clock,1000);
 
+let sidebarCollapseTimer;
+function cancelSidebarCollapse(){clearTimeout(sidebarCollapseTimer)}
+function scheduleSidebarCollapse(){
+  if(innerWidth<=820)return;
+  cancelSidebarCollapse();
+  sidebarCollapseTimer=setTimeout(()=>{
+    closeGroups();
+    els.side.classList.add("collapsed");
+    localStorage.setItem(SIDE_KEY,"true");
+  },420);
+}
+els.side.addEventListener("mouseenter",cancelSidebarCollapse);
+els.side.addEventListener("mouseleave",scheduleSidebarCollapse);
+
 els.form.addEventListener("submit",async e=>{
   e.preventDefault();
 
   const username=els.user.value.trim();
   const password=els.pass.value;
+  if(window.JalesAuth){
+    const ok=await window.JalesAuth.signIn(username,password);
+    if(!ok){els.pass.value="";els.pass.focus()}
+    return;
+  }
   const authenticatedUser=USERS.find(user =>
     user.username===username && user.password===password
   );
@@ -187,7 +202,7 @@ $("fullscreenButton").onclick=async()=>{try{document.fullscreenElement?await doc
 els.frame.addEventListener("load",()=>setTimeout(()=>els.loading.classList.add("hidden"),500));
 addEventListener("resize",()=>{if(innerWidth>820)closeMobile()});
 
-sessionStorage.getItem(AUTH_KEY)==="true"&&getLoggedUser()?showDash():showLogin();
+if(!window.JalesAuth)(sessionStorage.getItem(AUTH_KEY)==="true"&&getLoggedUser()?showDash():showLogin());
 
 
 // Cards da página inicial abrem o grupo correspondente no menu.

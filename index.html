@@ -11,6 +11,34 @@
   <section id="loginScreen" class="login-screen">
     <div class="login-bg"></div>
 
+    <div class="safety-panel">
+      <h2>SEGURANÇA É UM<br>VALOR QUE PROTEGE <em>VIDAS</em></h2>
+      <div class="safety-line"></div>
+      <div class="safety-list">
+        <div class="safety-item">
+          <span class="safety-symbol">✓</span>
+          <p>Segurança não é apenas uma regra. É um compromisso com a vida.</p>
+        </div>
+        <div class="safety-item">
+          <span class="safety-symbol">!</span>
+          <p>Nenhuma atividade é tão urgente que não possa ser realizada com segurança.</p>
+        </div>
+        <div class="safety-item">
+          <span class="safety-symbol">⌂</span>
+          <p>Trabalhe com atenção. Alguém espera por você em casa.</p>
+        </div>
+      </div>
+      <div class="floating-safety-assets" aria-hidden="true">
+        <img class="float-asset float-helmet" src="assets/flutuante-capacete-v20.png" alt="" />
+        <img class="float-asset float-harness" src="assets/flutuante-cinto-v20.png" alt="" />
+        <img class="float-asset float-gloves" src="assets/flutuante-luvas-v20.png" alt="" />
+        <img class="float-asset float-glasses" src="assets/flutuante-oculos-v20.png" alt="" />
+        <img class="float-asset float-sesmt" src="assets/flutuante-sesmt-v20.png" alt="" />
+        <img class="float-asset float-money" src="assets/flutuante-reais-v20.png" alt="" />
+      </div>
+    </div>
+
+
     <div class="login-card">
       <div class="login-brand">
         <img src="assets/logo-grupo-jales.png" alt="Logo Grupo Jales" />
@@ -20,15 +48,13 @@
         </div>
       </div>
 
-      <p class="login-copy">
-        Visão completa da operação em tempo real. Acesse indicadores administrativos e operacionais em um ambiente seguro, integrado e responsivo.
-      </p>
+      <p class="login-copy">Visão completa da operação em tempo real.</p>
 
       <form id="loginForm" novalidate>
-        <label for="username">Usuário</label>
+        <label for="username">Usuário ou e-mail</label>
         <div class="field">
           <span class="field-icon" data-icon="user"></span>
-          <input id="username" autocomplete="username" placeholder="Digite seu usuário" />
+          <input id="username" autocomplete="username" placeholder="Digite seu usuário ou e-mail" />
         </div>
 
         <label for="password">Senha</label>
@@ -72,6 +98,10 @@
       <nav id="menuContainer" class="menu-container"></nav>
 
       <div class="sidebar-footer">
+        <button id="adminUsersButton" class="logout-link admin-users-button hidden" type="button">
+          <span class="menu-icon" data-icon="users"></span>
+          <span class="menu-label">Administrar usuários</span>
+        </button>
         <button id="sidebarLogout" class="logout-link" type="button">
           <span class="menu-icon" data-icon="logout"></span>
           <span class="menu-label">Sair</span>
@@ -242,6 +272,51 @@
     </div>
   </section>
 
+  <section id="userAdminModal" class="portal-modal hidden" aria-modal="true" role="dialog" aria-labelledby="userAdminTitle">
+    <div class="portal-modal-card">
+      <div class="portal-modal-header">
+        <div>
+          <span class="eyebrow">ACESSO RESTRITO</span>
+          <h2 id="userAdminTitle">Administração de usuários</h2>
+          <p>Cadastre usuários por convite. As senhas nunca ficam armazenadas no portal.</p>
+        </div>
+        <button id="closeUserAdmin" class="modal-close" type="button" aria-label="Fechar">×</button>
+      </div>
+      <form id="createUserForm" class="admin-user-form">
+        <label>Nome completo<input id="newUserFullName" required minlength="3" /></label>
+        <label>Usuário<input id="newUsername" required pattern="[a-z0-9._-]{3,40}" /></label>
+        <label>E-mail<input id="newUserEmail" type="email" required /></label>
+        <label>Perfil
+          <select id="newUserRole"><option value="user">Usuário</option><option value="admin">Administrador</option></select>
+        </label>
+        <button class="login-button" type="submit">Enviar convite</button>
+        <div id="createUserMessage" class="admin-form-message" aria-live="polite"></div>
+      </form>
+      <div class="admin-users-list-wrap">
+        <table class="admin-users-table">
+          <thead><tr><th>Usuário</th><th>Nome</th><th>Perfil</th><th>Status</th></tr></thead>
+          <tbody id="adminUsersList"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="setPasswordModal" class="portal-modal hidden" aria-modal="true" role="dialog" aria-labelledby="setPasswordTitle">
+    <div class="portal-modal-card password-modal-card">
+      <div class="portal-modal-header">
+        <div><span class="eyebrow">PRIMEIRO ACESSO</span><h2 id="setPasswordTitle">Defina sua senha</h2></div>
+      </div>
+      <form id="setPasswordForm" class="admin-user-form single-column">
+        <label>Nova senha<input id="newAccountPassword" type="password" minlength="8" required autocomplete="new-password" /></label>
+        <label>Confirmar senha<input id="confirmAccountPassword" type="password" minlength="8" required autocomplete="new-password" /></label>
+        <button class="login-button" type="submit">Salvar senha e entrar</button>
+        <div id="setPasswordMessage" class="admin-form-message" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+  <script src="supabase-auth.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
