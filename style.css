@@ -2314,3 +2314,150 @@ body{
 @media(prefers-reduced-motion:reduce){
   .float-asset,.safety-item{animation:none!important}
 }
+
+/* =========================================================
+   V22.2 — cabeçalho limpo e login dividido sem sobreposições
+   ========================================================= */
+.topbar-left>div{
+  display:none!important;
+}
+
+@media(min-width:1051px){
+  .safety-panel{
+    width:100%;
+    max-width:900px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 210px;
+    grid-template-rows:auto auto minmax(310px,auto);
+    column-gap:22px;
+    align-items:start;
+    transform:translateY(-28px);
+  }
+  .safety-panel h2{
+    grid-column:1/-1;
+    width:100%;
+    margin:0 0 10px!important;
+    padding:15px 24px 17px;
+    border:1px solid rgba(104,199,255,.22);
+    border-radius:18px;
+    background:linear-gradient(90deg,rgba(1,20,42,.68),rgba(4,50,82,.34),rgba(1,17,35,.14));
+    box-shadow:0 14px 36px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06);
+    backdrop-filter:blur(8px);
+  }
+  .safety-line{
+    grid-column:1/-1;
+    width:100%;
+    margin:0 0 16px!important;
+  }
+  .safety-list{
+    grid-column:1;
+    grid-row:3;
+    width:100%;
+    max-width:none!important;
+    align-self:center;
+    margin:0;
+    padding:6px 8px 14px 4px;
+  }
+  .floating-safety-assets{
+    position:relative!important;
+    grid-column:2;
+    grid-row:3;
+    inset:auto!important;
+    width:210px;
+    height:100%;
+    min-height:330px;
+    z-index:3!important;
+    overflow:hidden!important;
+    border-left:1px solid rgba(75,181,238,.16);
+    pointer-events:none;
+  }
+  .float-asset{max-width:112px}
+  .float-helmet{width:104px!important;right:8px!important;top:1%!important;animation:laneDriftA 12.8s ease-in-out infinite!important}
+  .float-harness{width:108px!important;left:4px!important;right:auto!important;top:25%!important;animation:laneDriftB 14.2s ease-in-out infinite -2.4s!important}
+  .float-gloves{width:98px!important;right:5px!important;bottom:0!important;animation:laneDriftC 11.9s ease-in-out infinite -4.1s!important}
+  .float-glasses{width:88px!important;left:8px!important;bottom:21%!important;animation:laneDriftD 13.4s ease-in-out infinite -5.3s!important}
+  .float-sesmt{width:82px!important;left:8px!important;top:2%!important;animation:laneDriftE 12.2s ease-in-out infinite -1.6s!important}
+  .float-money{width:72px!important;right:15px!important;left:auto!important;top:48%!important;animation:laneDriftF 10.8s ease-in-out infinite -3.7s!important}
+  .safety-item:nth-child(1){animation:bubbleSafeA 10.6s ease-in-out infinite!important}
+  .safety-item:nth-child(2){animation:bubbleSafeB 11.8s ease-in-out infinite -2.2s!important}
+  .safety-item:nth-child(3){animation:bubbleSafeC 10.9s ease-in-out infinite -4.4s!important}
+}
+@keyframes laneDriftA{0%,100%{transform:translate3d(0,0,0) rotate(-4deg)}50%{transform:translate3d(-16px,38px,0) rotate(5deg)}}
+@keyframes laneDriftB{0%,100%{transform:translate3d(0,0,0) rotate(3deg)}50%{transform:translate3d(25px,-34px,0) rotate(-5deg)}}
+@keyframes laneDriftC{0%,100%{transform:translate3d(0,0,0) rotate(-2deg)}50%{transform:translate3d(-22px,-38px,0) rotate(5deg)}}
+@keyframes laneDriftD{0%,100%{transform:translate3d(0,0,0) rotate(2deg)}50%{transform:translate3d(24px,32px,0) rotate(-5deg)}}
+@keyframes laneDriftE{0%,100%{transform:translate3d(0,0,0) rotate(-3deg)}50%{transform:translate3d(28px,34px,0) rotate(4deg)}}
+@keyframes laneDriftF{0%,100%{transform:translate3d(0,0,0) rotate(4deg)}50%{transform:translate3d(-28px,-34px,0) rotate(-7deg)}}
+@keyframes bubbleSafeA{0%,100%{transform:translate3d(0,0,0) rotate(-.3deg)}50%{transform:translate3d(10px,-9px,0) rotate(.45deg)}}
+@keyframes bubbleSafeB{0%,100%{transform:translate3d(0,0,0) rotate(.3deg)}50%{transform:translate3d(-10px,9px,0) rotate(-.45deg)}}
+@keyframes bubbleSafeC{0%,100%{transform:translate3d(0,0,0) rotate(-.2deg)}50%{transform:translate3d(9px,-8px,0) rotate(.4deg)}}
+
+/* V22.3 — identidade tipográfica Jales Vision */
+.login-brand>div{
+  position:relative;
+  padding:8px 4px 13px 2px;
+}
+.login-brand h1{
+  position:relative;
+  margin:2px 0 0!important;
+  color:#fff;
+  font-weight:950!important;
+  letter-spacing:-.035em;
+  line-height:.98!important;
+  background:linear-gradient(105deg,#ffffff 8%,#cceaff 42%,#45b9ff 72%,#ffffff 100%);
+  background-size:180% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 6px 16px rgba(0,113,221,.22));
+  animation:brandShimmer 7s ease-in-out infinite;
+}
+.login-brand h1::after{
+  content:"";
+  position:absolute;
+  left:1px;
+  bottom:-12px;
+  width:72%;
+  height:3px;
+  border-radius:99px;
+  background:linear-gradient(90deg,#e63138 0 20%,#23aef2 20% 78%,transparent 100%);
+  box-shadow:0 0 14px rgba(35,174,242,.36);
+}
+.login-brand .eyebrow{
+  margin-bottom:7px;
+  color:#64c4ff!important;
+  font-size:10px!important;
+  letter-spacing:.28em!important;
+}
+.intro-copy h3{
+  position:relative;
+  display:inline-block;
+  margin-bottom:18px!important;
+  color:#fff!important;
+  font-weight:950!important;
+  letter-spacing:-.035em!important;
+  background:linear-gradient(105deg,#fff,#bfe5ff 48%,#35b6ff 78%,#fff);
+  background-size:180% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 7px 18px rgba(0,112,221,.2));
+  animation:brandShimmer 7s ease-in-out infinite -2.2s;
+}
+.intro-copy h3::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-9px;
+  width:78%;
+  height:3px;
+  border-radius:99px;
+  background:linear-gradient(90deg,#e63138 0 18%,#2aaeff 18% 72%,transparent);
+}
+@keyframes brandShimmer{
+  0%,100%{background-position:0% center}
+  50%{background-position:100% center}
+}
+@media(prefers-reduced-motion:reduce){
+  .login-brand h1,.intro-copy h3{animation:none!important}
+}
