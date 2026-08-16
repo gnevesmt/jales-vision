@@ -99,6 +99,14 @@
     byId("setPasswordModal")?.classList.remove("hidden");
   }
 
+  function isPasswordSetupReturn(){
+    const params=new URLSearchParams(location.search);
+    const hash=location.hash||"";
+    return params.has("code")||params.has("token_hash")||
+      /(?:^|[&#])type=(?:invite|recovery)(?:&|$)/.test(hash)||
+      /(?:^|[?&])type=(?:invite|recovery)(?:&|$)/.test(location.search);
+  }
+
   async function saveFirstPassword(event){
     event.preventDefault();
     const password=byId("newAccountPassword").value;
@@ -122,7 +130,10 @@
     byId("createUserForm")?.addEventListener("submit",createUser);
     byId("setPasswordForm")?.addEventListener("submit",saveFirstPassword);
 
-    const invitation=/type=invite|type=recovery/.test(location.hash+location.search);
+    const invitation=isPasswordSetupReturn();
+    client.auth.onAuthStateChange((event,session)=>{
+      if(event==="PASSWORD_RECOVERY"||(invitation&&session))showPasswordSetup();
+    });
     const {data}=await client.auth.getSession();
     if(invitation&&data.session){showPasswordSetup();return}
     if(data.session)await enterWithSession(data.session);
