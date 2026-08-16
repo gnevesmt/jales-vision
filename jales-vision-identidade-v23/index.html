@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Jales Vision | Visão completa da operação em tempo real</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section id="loginScreen" class="login-screen">
+    <div class="login-bg"></div>
+
+    <div class="safety-panel">
+      <h2>SEGURANÇA É UM<br>VALOR QUE PROTEGE <em>VIDAS</em></h2>
+      <div class="safety-line"></div>
+      <div class="safety-list">
+        <div class="safety-item">
+          <span class="safety-symbol">✓</span>
+          <p>Segurança não é apenas uma regra. É um compromisso com a vida.</p>
+        </div>
+        <div class="safety-item">
+          <span class="safety-symbol">!</span>
+          <p>Nenhuma atividade é tão urgente que não possa ser realizada com segurança.</p>
+        </div>
+        <div class="safety-item">
+          <span class="safety-symbol">⌂</span>
+          <p>Trabalhe com atenção. Alguém espera por você em casa.</p>
+        </div>
+      </div>
+      <div class="floating-safety-assets" aria-hidden="true">
+        <img class="float-asset float-helmet" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-capacete-v20.png" alt="" />
+        <img class="float-asset float-harness" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-cinto-v20.png" alt="" />
+        <img class="float-asset float-gloves" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-luvas-v20.png" alt="" />
+        <img class="float-asset float-glasses" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-oculos-v20.png" alt="" />
+        <img class="float-asset float-sesmt" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-sesmt-v20.png" alt="" />
+        <img class="float-asset float-money" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-reais-v20.png" alt="" />
+      </div>
+    </div>
+
+
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="assets/jales-vision-logo-v23.png" alt="Jales Vision" class="jales-vision-logo" />
+      </div>
+
+      <p class="login-copy">Visão completa da operação em tempo real.</p>
+
+      <form id="loginForm" novalidate>
+        <label for="username">Usuário ou e-mail</label>
+        <div class="field">
+          <span class="field-icon" data-icon="user"></span>
+          <input id="username" autocomplete="username" placeholder="Digite seu usuário ou e-mail" />
+        </div>
+
+        <label for="password">Senha</label>
+        <div class="field">
+          <span class="field-icon" data-icon="lock"></span>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" />
+          <button id="togglePassword" class="toggle-password" type="button" aria-label="Mostrar senha"></button>
+        </div>
+
+        <div id="loginError" class="login-error"></div>
+
+        <button class="login-button" type="submit">
+          <span>Entrar</span>
+          <span data-icon="arrow-right"></span>
+        </button>
+      </form>
+
+      <div class="secure-note">
+        <i></i>
+        Ambiente corporativo protegido
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboardScreen" class="dashboard-screen hidden">
+    <div id="mobileOverlay" class="mobile-overlay"></div>
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/jales-vision-logo-v23.png" class="sidebar-logo" alt="Jales Vision" />
+        <button id="sidebarToggle" class="sidebar-toggle-button" type="button" title="Recolher ou expandir menu" aria-label="Recolher ou expandir menu"><span data-icon="menu"></span></button>
+      </div>
+
+      <div class="sidebar-caption">NAVEGAÇÃO</div>
+
+      <button id="homeButton" class="home-button active" type="button">
+        <span class="menu-icon" data-icon="home"></span>
+        <span class="menu-label">Página inicial</span>
+      </button>
+
+      <nav id="menuContainer" class="menu-container"></nav>
+
+      <div class="sidebar-footer">
+        <button id="adminUsersButton" class="logout-link admin-users-button hidden" type="button">
+          <span class="menu-icon" data-icon="users"></span>
+          <span class="menu-label">Administrar usuários</span>
+        </button>
+        <button id="sidebarLogout" class="logout-link" type="button">
+          <span class="menu-icon" data-icon="logout"></span>
+          <span class="menu-label">Sair</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="mobileMenuButton" class="icon-button mobile-menu-button" type="button">
+            <span data-icon="menu"></span>
+          </button>
+
+          <div>
+            <span class="eyebrow">JALES VISION</span>
+            <h2 id="pageTitle">Página inicial</h2>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div id="clock" class="clock"></div>
+
+          <button id="fullscreenButton" class="top-action-button" type="button" title="Tela cheia">
+            <span data-icon="maximize"></span><span class="top-action-label">Tela cheia</span>
+          </button>
+
+          <div class="profile">
+              <b id="profileInitials">GN</b>
+              <span><span id="profileName">Gilmar Pereira Neves</span><small id="profileRole">Usuário conectado</small></span>
+            </div>
+
+          <button id="headerLogout" class="header-logout" type="button">
+            <span data-icon="logout"></span>
+            <span>Sair</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <section id="welcomePage" class="welcome-page reference-home clean-home">
+          <div class="clean-home-content">
+            <section class="clean-intro">
+              <div class="intro-copy">
+                <span id="dynamicGreeting" class="home-kicker">SEJA BEM-VINDO AO SISTEMA</span>
+                <h3>JALES VISION</h3>
+                <h6 id="welcomeMessage" class="welcome-message">Bem-vindo ao Jales Vision.</h6>
+                <div id="welcomeMoment" class="welcome-moment"></div>
+                <h4>Visão completa da operação em tempo real.</h4>
+                <h5>FILIAL CONFRESA – MT</h5>
+                <div class="home-rule"></div>
+                <p>
+                  Uma plataforma corporativa para transformar dados em visão estratégica, controle operacional e decisões mais precisas.
+                </p>
+              </div>
+
+              <div class="logo-showcase">
+                <div class="logo-showcase-glow"></div>
+                <div class="logo-frame">
+                  <img src="assets/jales-vision-logo-v23.png" alt="Jales Vision" />
+                </div>
+                <span>Visão • Controle • Eficiência • Resultados</span>
+              </div>
+            </section>
+
+            <section class="motivation-grid" aria-label="Mensagens institucionais">
+              <article class="motivation-card leadership">
+                <div class="motivation-icon" data-icon="users"></div>
+                <div>
+                  <strong>Liderança</strong>
+                  <p>
+                    Inspirar pessoas, transformar desafios em oportunidades e liderar pelo exemplo.
+                  </p>
+                </div>
+              </article>
+
+              <article class="motivation-card management">
+                <div class="motivation-icon" data-icon="productivity"></div>
+                <div>
+                  <strong>Gestão</strong>
+                  <p>
+                    Planejamento, disciplina e decisões baseadas em informações confiáveis.
+                  </p>
+                </div>
+              </article>
+
+              <article class="motivation-card safety">
+                <div class="motivation-icon" data-icon="safety"></div>
+                <div>
+                  <strong>Segurança do Trabalho</strong>
+                  <p>
+                    Nenhum resultado é mais importante que a vida. Segurança é compromisso de todos.
+                  </p>
+                </div>
+              </article>
+
+              <article class="motivation-card commitment">
+                <div class="motivation-icon" data-icon="shield"></div>
+                <div>
+                  <strong>Compromisso</strong>
+                  <p>
+                    Excelência é fazer o certo todos os dias, com qualidade e foco no resultado coletivo.
+                  </p>
+                </div>
+              </article>
+            </section>
+          </div>
+
+          <div class="home-modules compact-modules">
+            <button class="home-module-card" data-group-target="2" type="button">
+              <i data-icon="clipboard-check"></i>
+              <strong>FISCALIZAÇÕES</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="0" type="button">
+              <i data-icon="calculator"></i>
+              <strong>MEDIÇÕES</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="1" type="button">
+              <i data-icon="coin"></i>
+              <strong>FINANCEIRO</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="3" type="button">
+              <i data-icon="productivity"></i>
+              <strong>PRODUÇÕES</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="4" type="button">
+              <i data-icon="safety"></i>
+              <strong>SESMT</strong>
+              <b>→</b>
+            </button>
+
+            <button class="home-module-card" data-group-target="5" type="button">
+              <i data-icon="future"></i>
+              <strong>PROJETO FUTURO</strong>
+              <b>→</b>
+            </button>
+          </div>
+
+          <footer class="home-footer">
+            <span>© 2026 Grupo Jales • Jales Vision</span>
+            <span>Autoria: <strong>Gilmar Pereira Neves</strong></span>
+          </footer>
+        </section>
+
+        <section id="reportPage" class="report-page hidden">
+          <div id="loadingLayer" class="loading-layer">
+            <div class="spinner"></div>
+            <strong>Carregando relatório...</strong>
+            <span>O Power BI pode solicitar autenticação na primeira abertura.</span>
+          </div>
+
+          <iframe
+            id="reportFrame"
+            title="Relatório Power BI"
+            src="about:blank"
+            allowfullscreen
+          ></iframe>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="userAdminModal" class="portal-modal hidden" aria-modal="true" role="dialog" aria-labelledby="userAdminTitle">
+    <div class="portal-modal-card">
+      <div class="portal-modal-header">
+        <div>
+          <span class="eyebrow">ACESSO RESTRITO</span>
+          <h2 id="userAdminTitle">Administração de usuários</h2>
+          <p>Cadastre usuários por convite. As senhas nunca ficam armazenadas no portal.</p>
+        </div>
+        <button id="closeUserAdmin" class="modal-close" type="button" aria-label="Fechar">×</button>
+      </div>
+      <form id="createUserForm" class="admin-user-form">
+        <label>Nome completo<input id="newUserFullName" required minlength="3" /></label>
+        <label>Usuário<input id="newUsername" required pattern="[a-z0-9._-]{3,40}" /></label>
+        <label>E-mail<input id="newUserEmail" type="email" required /></label>
+        <label>Perfil
+          <select id="newUserRole"><option value="user">Usuário</option><option value="admin">Administrador</option></select>
+        </label>
+        <button class="login-button" type="submit">Enviar convite</button>
+        <div id="createUserMessage" class="admin-form-message" aria-live="polite"></div>
+      </form>
+      <div class="admin-users-list-wrap">
+        <table class="admin-users-table">
+          <thead><tr><th>Usuário</th><th>Nome</th><th>Perfil</th><th>Status</th></tr></thead>
+          <tbody id="adminUsersList"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="setPasswordModal" class="portal-modal hidden" aria-modal="true" role="dialog" aria-labelledby="setPasswordTitle">
+    <div class="portal-modal-card password-modal-card">
+      <div class="portal-modal-header">
+        <div><span class="eyebrow">PRIMEIRO ACESSO</span><h2 id="setPasswordTitle">Defina sua senha</h2></div>
+      </div>
+      <form id="setPasswordForm" class="admin-user-form single-column">
+        <label>Nova senha<input id="newAccountPassword" type="password" minlength="8" required autocomplete="new-password" /></label>
+        <label>Confirmar senha<input id="confirmAccountPassword" type="password" minlength="8" required autocomplete="new-password" /></label>
+        <button class="login-button" type="submit">Salvar senha e entrar</button>
+        <div id="setPasswordMessage" class="admin-form-message" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+  <script src="supabase-auth.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
