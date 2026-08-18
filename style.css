@@ -2919,3 +2919,96 @@ body{
 @media(max-width:820px){
   .desktop-nav-actions{display:none!important}
 }
+
+/* V26.6 — barra horizontal ultracompacta, sem itens cortados */
+@media(min-width:821px){
+  :root{--portal-nav-height:48px}
+  .sidebar,.sidebar.collapsed{height:48px!important}
+  .sidebar-header{
+    width:92px!important;
+    height:46px!important;
+    min-height:46px!important;
+    padding:2px 9px!important;
+  }
+  .sidebar-logo,.sidebar.collapsed .sidebar-logo{
+    width:73px!important;
+    height:39px!important;
+  }
+  .home-button,.sidebar.collapsed .home-button,
+  .menu-main,.sidebar.collapsed .menu-main{
+    min-width:0!important;
+    width:max-content!important;
+    min-height:46px!important;
+    height:46px!important;
+    gap:3px!important;
+    padding:0 8px!important;
+  }
+  .home-button .menu-label,.menu-main .menu-label,.sidebar.collapsed .menu-label{
+    flex:0 0 auto!important;
+    font-size:10.5px!important;
+    font-weight:750!important;
+    letter-spacing:0!important;
+  }
+  .menu-arrow,.sidebar.collapsed .menu-arrow{
+    width:10px!important;
+    min-width:10px!important;
+    margin-left:0!important;
+  }
+  .menu-arrow svg{width:10px!important;height:10px!important}
+  .menu-container{flex:0 1 auto!important;min-width:0!important}
+  .menu-group{flex:0 0 auto!important}
+
+  .sidebar-footer{
+    flex:1 1 auto!important;
+    min-width:0!important;
+    height:46px!important;
+    justify-content:flex-end!important;
+    padding-right:5px!important;
+  }
+  .sidebar-footer .logout-link,.sidebar.collapsed .sidebar-footer .logout-link{
+    min-height:46px!important;
+    height:46px!important;
+    gap:4px!important;
+    padding:0 7px!important;
+  }
+  .sidebar-footer .logout-link .menu-icon{width:15px!important;min-width:15px!important}
+  .sidebar-footer .logout-link .menu-icon svg{width:14px!important;height:14px!important}
+  .sidebar-footer .logout-link .menu-label{font-size:10px!important}
+  .desktop-nav-actions{gap:3px!important}
+  .desktop-nav-actions .clock{
+    min-width:70px!important;
+    padding:0 5px!important;
+    font-size:8px!important;
+  }
+  .desktop-nav-actions .top-action-button,
+  .desktop-nav-actions .header-logout{
+    width:auto!important;
+    height:30px!important;
+    min-height:30px!important;
+    gap:4px!important;
+    padding:0 7px!important;
+    font-size:10px!important;
+  }
+  .desktop-nav-actions .top-action-button svg,
+  .desktop-nav-actions .header-logout svg{width:14px!important;height:14px!important}
+  .desktop-nav-actions .profile{height:32px!important;padding:0 3px!important}
+  .desktop-nav-actions .profile b{width:28px!important;height:28px!important;font-size:9px!important}
+  .topbar{display:none!important}
+}
+
+@media(max-width:1366px) and (min-width:821px){
+  .home-button,.sidebar.collapsed .home-button,
+  .menu-main,.sidebar.collapsed .menu-main{padding-left:6px!important;padding-right:6px!important}
+  .home-button .menu-label,.menu-main .menu-label{font-size:9.8px!important}
+  .sidebar-footer .logout-link .menu-label{font-size:9.5px!important}
+  .desktop-nav-actions .header-logout span:last-child{display:none!important}
+}
+
+@media(max-width:1180px) and (min-width:821px){
+  .sidebar-header{width:74px!important;padding-left:5px!important;padding-right:5px!important}
+  .sidebar-logo,.sidebar.collapsed .sidebar-logo{width:62px!important}
+  .home-button,.sidebar.collapsed .home-button,
+  .menu-main,.sidebar.collapsed .menu-main{padding-left:5px!important;padding-right:5px!important}
+  .home-button .menu-label,.menu-main .menu-label{font-size:9px!important}
+  .desktop-nav-actions .profile{display:none!important}
+}
