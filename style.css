@@ -3012,3 +3012,18 @@ body{
   .home-button .menu-label,.menu-main .menu-label{font-size:9px!important}
   .desktop-nav-actions .profile{display:none!important}
 }
+
+/* V26.7 — remove as margens claras laterais do enquadramento Power BI */
+@media(min-width:821px){
+  .report-page{
+    overflow:hidden!important;
+    background:#020c18!important;
+  }
+  .report-page iframe{
+    width:100%!important;
+    height:100%!important;
+    transform:scaleX(1.07)!important;
+    transform-origin:center center!important;
+    background:#020c18!important;
+  }
+}
