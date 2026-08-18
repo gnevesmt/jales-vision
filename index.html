@@ -9,73 +9,70 @@
 </head>
 <body>
   <section id="loginScreen" class="login-screen">
-    <div class="login-bg"></div>
-
-    <div class="safety-panel">
-      <h2>SEGURANÇA É UM<br>VALOR QUE PROTEGE <em>VIDAS</em></h2>
-      <div class="safety-line"></div>
-      <div class="safety-list">
-        <div class="safety-item">
-          <span class="safety-symbol">✓</span>
-          <p>Segurança não é apenas uma regra. É um compromisso com a vida.</p>
-        </div>
-        <div class="safety-item">
-          <span class="safety-symbol">!</span>
-          <p>Nenhuma atividade é tão urgente que não possa ser realizada com segurança.</p>
-        </div>
-        <div class="safety-item">
-          <span class="safety-symbol">⌂</span>
-          <p>Trabalhe com atenção. Alguém espera por você em casa.</p>
-        </div>
-      </div>
-      <div class="floating-safety-assets" aria-hidden="true">
-        <img class="float-asset float-helmet" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-capacete-v20.png" alt="" />
-        <img class="float-asset float-harness" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-cinto-v20.png" alt="" />
-        <img class="float-asset float-gloves" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-luvas-v20.png" alt="" />
-        <img class="float-asset float-glasses" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-oculos-v20.png" alt="" />
-        <img class="float-asset float-sesmt" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-sesmt-v20.png" alt="" />
-        <img class="float-asset float-money" src="https://gnacuondhfktcmfqpzho.supabase.co/storage/v1/object/public/portal-assets/flutuante-reais-v20.png" alt="" />
-      </div>
-    </div>
-
-
-    <div class="login-card">
-      <div class="login-brand">
+    <header class="login-header">
+      <div class="portal-brand">
         <img src="assets/logo-grupo-jales.png" alt="Logo Grupo Jales" />
-        <div class="login-brand-name">
-          <h1 class="jales-vision-wordmark"><span>Jales</span> <strong>Vision</strong></h1>
+        <span class="brand-separator"></span>
+        <strong>Jales <em>Vision</em></strong>
+      </div>
+      <div class="login-header-actions">
+        <span>Suporte</span>
+        <span class="header-separator"></span>
+        <span class="secure-access"><b data-icon="shield"></b>Acesso seguro</span>
+      </div>
+    </header>
+
+    <main class="login-main">
+      <section class="login-visual" aria-label="Inteligência operacional">
+        <div class="login-bg"></div>
+        <div class="login-visual-copy">
+          <span>INTELIGÊNCIA OPERACIONAL</span>
+          <h2>Visão completa<br />da operação</h2>
+          <p>Produção, faturamento e indicadores em um só lugar.</p>
+        </div>
+      </section>
+
+      <div class="login-card">
+        <div class="login-card-heading">
+          <h1>Bem-vindo</h1>
+          <p>Acesse o Jales Vision</p>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <label for="username">E-mail ou usuário</label>
+          <div class="field">
+            <span class="field-icon" data-icon="user"></span>
+            <input id="username" autocomplete="username" placeholder="Digite seu e-mail ou usuário" />
+          </div>
+
+          <label for="password">Senha</label>
+          <div class="field">
+            <span class="field-icon" data-icon="lock"></span>
+            <input id="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" />
+            <button id="togglePassword" class="toggle-password" type="button" aria-label="Mostrar senha"></button>
+          </div>
+
+          <div id="loginError" class="login-error"></div>
+
+          <button class="login-button" type="submit">
+            <span>Entrar</span>
+            <span data-icon="arrow-right"></span>
+          </button>
+        </form>
+
+        <div class="secure-note">
+          <span data-icon="shield"></span>
+          Ambiente seguro e restrito
         </div>
       </div>
+    </main>
 
-      <p class="login-copy">Visão completa da operação em tempo real.</p>
-
-      <form id="loginForm" novalidate>
-        <label for="username">Usuário ou e-mail</label>
-        <div class="field">
-          <span class="field-icon" data-icon="user"></span>
-          <input id="username" autocomplete="username" placeholder="Digite seu usuário ou e-mail" />
-        </div>
-
-        <label for="password">Senha</label>
-        <div class="field">
-          <span class="field-icon" data-icon="lock"></span>
-          <input id="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" />
-          <button id="togglePassword" class="toggle-password" type="button" aria-label="Mostrar senha"></button>
-        </div>
-
-        <div id="loginError" class="login-error"></div>
-
-        <button class="login-button" type="submit">
-          <span>Entrar</span>
-          <span data-icon="arrow-right"></span>
-        </button>
-      </form>
-
-      <div class="secure-note">
-        <i></i>
-        Ambiente corporativo protegido
-      </div>
-    </div>
+    <footer class="login-footer">
+      <div class="footer-brand"><img src="assets/logo-grupo-jales.png" alt="Grupo Jales" /><span>Inovação que gera resultados.</span></div>
+      <div><strong>Atendimento</strong><span>Suporte aos usuários do portal</span><span>Filial Confresa – MT</span></div>
+      <div><strong>Segurança</strong><span>Dados protegidos e acesso restrito</span><span>Uso exclusivo de usuários autorizados</span></div>
+      <div><strong>Jales Vision</strong><span>Inteligência para decisões</span><span>Visão • Controle • Resultados</span></div>
+    </footer>
   </section>
 
   <section id="dashboardScreen" class="dashboard-screen hidden">
