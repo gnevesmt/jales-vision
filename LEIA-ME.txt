@@ -1,0 +1,13 @@
+JALES VISION V25 - NOVO FUNDO DO LOGIN
+
+Arquivos deste pacote:
+- style.css
+- assets/login-inteligencia-producao-v25.png
+
+Publicacao no GitHub:
+1. Envie style.css para a raiz do repositorio, substituindo o atual.
+2. Envie login-inteligencia-producao-v25.png para a pasta assets.
+3. Confirme as alteracoes na filial principal.
+4. Aguarde a publicacao e pressione Ctrl + F5 no portal.
+
+O fundo anterior continua preservado na pasta assets e pode ser restaurado pelo historico do GitHub.
